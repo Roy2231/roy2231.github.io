@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Manas Ranjan Bissoyi">
+<meta property="og:description" content="Founder of Ateegnas, an AI-native annotation layer for high-quality training data.">
+<meta property="og:type" content="website">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Manas Ranjan Bissoyi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Manas Ranjan Bissoyi, founder of Ateegnas, building data infrastructure for AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column laid out like a dataset card — a record header,
+   then labelled fields (thesis, now, log, skills, education), with a field-name gutter on wide screens. */
+:root {
+  --bg: #f2f4f3;
+  --surface: #ffffff;
+  --fg: #13201c;
+  --muted: #5a6b66;
+  --rule: #d5ddda;
+  --accent: #0e6b5b;
+  --signal: #c98a0c;
+  --noise: #c4cfcb;
+
+  --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --body: "Schibsted Grotesk", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --step--1: 0.8125rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(2.4rem, 6vw, 4.2rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1412; --surface: #141d1a; --fg: #e3ebe8; --muted: #93a49f;
+    --rule: #26332f; --accent: #4fc4a9; --signal: #e8b54a; --noise: #2e3c38;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1412; --surface: #141d1a; --fg: #e3ebe8; --muted: #93a49f;
+  --rule: #26332f; --accent: #4fc4a9; --signal: #e8b54a; --noise: #2e3c38;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Top bar ---------- */
+.bar { border-bottom: 1px solid var(--rule); }
+.bar .wrap {
+  display: flex; flex-wrap: wrap; gap: 8px 24px;
+  justify-content: space-between; align-items: center;
+  padding-block: 14px;
+  font-family: var(--mono); font-size: var(--step--1); color: var(--muted);
+}
+.bar nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.bar nav a { color: var(--muted); text-decoration: none; }
+.bar nav a:hover { color: var(--fg); }
+.status { display: inline-flex; align-items: center; gap: 8px; }
+.status i {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* ---------- Hero ---------- */
+.hero .wrap {
+  display: grid; gap: 40px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  padding-block: 64px 56px;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: var(--step--1);
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+  margin: 0 0 18px;
+}
+h1 {
+  font-family: var(--display); font-weight: 400;
+  font-size: var(--step-3); line-height: 1.02; letter-spacing: -0.01em;
+  margin: 0 0 22px; text-wrap: balance;
+}
+h1 em { font-style: italic; color: var(--accent); }
+.lede { font-size: var(--step-1); line-height: 1.5; color: var(--muted); margin: 0; max-width: 34ch; }
+.lede strong { color: var(--fg); font-weight: 600; }
+
+.matrix {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.matrix canvas { display: block; width: 100%; aspect-ratio: 5 / 4; max-width: 100%; }
+.matrix figcaption {
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 0.75rem; color: var(--muted);
+  border-top: 1px solid var(--rule); padding: 10px 14px;
+  font-variant-numeric: tabular-nums;
+}
+.matrix figcaption b { color: var(--accent); font-weight: 500; }
+
+/* ---------- Sections as dataset fields ---------- */
+section { border-top: 1px solid var(--rule); }
+section > .wrap {
+  display: grid; gap: 12px 40px;
+  grid-template-columns: 180px minmax(0, 1fr);
+  padding-block: 52px;
+}
+.field {
+  font-family: var(--mono); font-size: var(--step--1); color: var(--muted);
+  padding-top: 6px;
+}
+.field span { color: var(--signal); }
+h2 {
+  font-family: var(--display); font-weight: 400; font-size: var(--step-2);
+  line-height: 1.15; margin: 0 0 16px; text-wrap: balance;
+}
+.prose { max-width: 62ch; }
+.prose p { margin: 0 0 14px; }
+
+/* Now */
+.now-card {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 24px; max-width: 62ch;
+}
+.now-head { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+.now-head h3 { font-family: var(--display); font-weight: 400; font-size: var(--step-2); margin: 0; }
+.meta { font-family: var(--mono); font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; }
+.now-card p { margin: 0; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding: 0; list-style: none; }
+.pills li {
+  font-family: var(--mono); font-size: 0.78rem;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 3px 11px; color: var(--muted);
+}
+
+.now-card p.now-link { margin-top: 16px; font-family: var(--mono); font-size: var(--step--1); }
+.selected {
+  list-style: none; margin: 20px 0 0; padding: 0; max-width: 62ch;
+  display: grid; gap: 0; grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--rule);
+}
+.selected li { padding: 14px 16px 0 0; display: grid; gap: 2px; }
+.selected b { font-family: var(--display); font-weight: 400; font-size: var(--step-2); line-height: 1.1; color: var(--accent); }
+.selected span { font-size: var(--step--1); color: var(--muted); line-height: 1.4; }
+.intro { color: var(--muted); max-width: 60ch; margin: -6px 0 24px; }
+
+/* Projects */
+.projects { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.project {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0;
+}
+.p-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; }
+.p-head h3 { font-family: var(--display); font-weight: 400; font-size: var(--step-1); margin: 0; }
+.project p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; }
+.metrics div { border-top: 1px solid var(--rule); padding-top: 8px; }
+.metrics dt { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.metrics dd { margin: 0; font-family: var(--mono); font-size: var(--step-0); color: var(--fg); font-variant-numeric: tabular-nums; }
+.stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.stack li { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); border: 1px solid var(--rule); border-radius: 3px; padding: 1px 7px; }
+.project .links { margin-top: auto; display: flex; gap: 16px; font-family: var(--mono); font-size: var(--step--1); }
+
+.more { display: grid; gap: 28px 40px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 36px; }
+.more h3 {
+  font-family: var(--mono); font-size: var(--step--1); font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px;
+}
+.more ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.more li { display: grid; gap: 2px; padding-block: 12px; border-bottom: 1px dashed var(--rule); min-width: 0; }
+.more li b { font-weight: 600; }
+.more li span { color: var(--muted); font-size: 0.95rem; }
+
+/* Log */
+.log { list-style: none; margin: 0; padding: 0; display: grid; }
+.log li {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 24px;
+  padding-block: 20px; border-bottom: 1px solid var(--rule);
+}
+.log li:first-child { padding-top: 0; }
+.log li:last-child { border-bottom: 0; }
+.log time { font-family: var(--mono); font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.log h3 { font-size: var(--step-0); font-weight: 600; margin: 0; }
+.log h3 .org { color: var(--fg); }
+.log h3 .role { color: var(--muted); font-weight: 400; }
+.log p { margin: 6px 0 0; color: var(--muted); max-width: 60ch; }
+.tag {
+  display: inline-block; vertical-align: 2px; margin-left: 8px;
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 3px; padding: 0 6px;
+}
+
+/* Two-column field grids */
+.cols { display: grid; gap: 28px 40px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.cols h3 {
+  font-family: var(--mono); font-size: var(--step--1); font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px;
+}
+.cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.cols li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--rule); padding-bottom: 8px; }
+.cols li small { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); text-align: right; }
+
+.edu { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.edu li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 24px; }
+.edu b { font-weight: 600; display: block; }
+.edu span { color: var(--muted); }
+
+/* Contact */
+.contact h2 { font-size: var(--step-3); line-height: 1.05; margin-bottom: 22px; }
+.contact-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.email {
+  font-family: var(--mono); font-size: var(--step-0);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 10px 14px; user-select: all; overflow-wrap: anywhere;
+}
+button.copy, a.btn {
+  font: 500 var(--step--1) var(--body);
+  border-radius: 6px; padding: 11px 16px; cursor: pointer; text-decoration: none;
+  border: 1px solid var(--accent);
+}
+button.copy { background: var(--accent); color: var(--bg); }
+button.copy:hover { filter: brightness(1.08); }
+a.btn { background: transparent; color: var(--accent); }
+a.btn:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+
+footer .wrap {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+  padding-block: 24px 40px; border-top: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 0.75rem; color: var(--muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 780px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 40px; gap: 32px; }
+  section > .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 40px; }
+  .field { padding-top: 0; }
+}
+@media (max-width: 520px) {
+  .log li, .edu li { grid-template-columns: minmax(0, 1fr); }
+  .selected { grid-template-columns: minmax(0, 1fr); }
+  .bar nav { display: none; }
+}
+</style>
+
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <span class="status"><i aria-hidden="true"></i>Building Ateegnas · Odisha, India</span>
+    <nav aria-label="Sections">
+      <a href="#thesis">Thesis</a>
+      <a href="#now">Now</a>
+      <a href="#built">Built</a>
+      <a href="#log">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Manas Ranjan Bissoyi · Founder, Ateegnas</p>
+        <h1>The model is rarely the weak link. <em>The data is.</em></h1>
+        <p class="lede">I'm building <strong>Ateegnas</strong>, an AI-native annotation layer that delivers consistent, high-quality training data at speed.</p>
+      </div>
+      <figure class="matrix" aria-label="Animated illustration: scattered data points settling into a clean, aligned grid">
+        <canvas id="matrix"></canvas>
+        <figcaption>
+          <span>samples <b id="clean">0</b> / <span id="total">0</span> clean</span>
+          <span>ateegnas.pipeline</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section id="thesis">
+    <div class="wrap">
+      <div class="field"><span>#</span> thesis</div>
+      <div class="prose">
+        <h2>Fix the data and the product follows</h2>
+        <p>Teams spend months tuning models and comparatively little on what goes into them. Mislabelled samples, thin coverage and noisy collection show up later as a product that fails in ways nobody can trace.</p>
+        <p>My belief is simple: the weakest link in any AI product isn't the model, it's the data feeding it. That's the problem I'm solving.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="now">
+    <div class="wrap">
+      <div class="field"><span>#</span> now</div>
+      <div>
+        <div class="now-card">
+          <div class="now-head">
+            <h3>Ateegnas</h3>
+            <span class="meta">Founder · Mar 2025 – present</span>
+          </div>
+          <p>An AI-native annotation layer, built from Nabarangpur, Odisha. Ateegnas produces consistent, high-quality training data at ultrafast speed, so AI teams stop losing accuracy to noisy labels.</p>
+          <ul class="pills" aria-label="Focus areas">
+            <li>annotation</li>
+            <li>data collection</li>
+            <li>egocentric data</li>
+            <li>training data QA</li>
+          </ul>
+          <p class="now-link"><a href="https://ateegnas.com" target="_blank" rel="noopener">ateegnas.com ↗</a></p>
+        </div>
+        <ul class="selected" aria-label="Programs Ateegnas was selected for">
+          <li><b>Top 3%</b><span>Tavastra VC, of 4,242 applicants</span></li>
+          <li><b>Top 100</b><span>IPV Idea School, of 2,000 startups</span></li>
+          <li><b>TIDE 2.0</b><span>MeitY grant via NIT Rourkela, a government AI innovation programme</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="built">
+    <div class="wrap">
+      <div class="field"><span>#</span> built</div>
+      <div>
+        <h2>Things I've shipped myself</h2>
+        <p class="intro">I taught myself AI workflows by building: RAG-based tools, a fine-tuned BERT model on Hugging Face, and full-stack products.</p>
+        <div class="projects">
+          <article class="project">
+            <div class="p-head">
+              <h3>Kazbrekker</h3>
+              <span class="meta">model · Python</span>
+            </div>
+            <p>A sentiment classifier fine-tuned from BERT-base, sorting text into Positive, Negative, Neutral and Irrelevant. Published on Hugging Face, with 11 downloads in its first 12 hours.</p>
+            <dl class="metrics">
+              <div><dt>accuracy</dt><dd>92.2%</dd></div>
+              <div><dt>macro F1</dt><dd>0.922</dd></div>
+              <div><dt>val loss</dt><dd>0.334</dd></div>
+            </dl>
+            <p class="links"><a href="https://huggingface.co/roy2231/Kazbrekker" target="_blank" rel="noopener">Hugging Face ↗</a><a href="https://github.com/roy2231/Kazbrekker" target="_blank" rel="noopener">Code ↗</a></p>
+          </article>
+          <article class="project">
+            <div class="p-head">
+              <h3>JustBid</h3>
+              <span class="meta">web app · TypeScript</span>
+            </div>
+            <p>A leaderboard where companies bid with startup credits, discounts and goodies to stay on top, so founders find the best perks in one place.</p>
+            <ul class="stack"><li>React 19</li><li>Express</li><li>Firebase</li><li>Supabase</li><li>Gemini API</li><li>payments</li></ul>
+            <p class="links"><a href="https://github.com/roy2231/Justbid" target="_blank" rel="noopener">Code ↗</a></p>
+          </article>
+          <article class="project">
+            <div class="p-head">
+              <h3>Remember</h3>
+              <span class="meta">dev tool · JavaScript</span>
+            </div>
+            <p>A persistent memory layer for AI agents, so they keep context across sessions. Includes a developer dashboard for what an agent stores and recalls.</p>
+            <ul class="stack"><li>React</li><li>Python backend</li><li>agent memory</li></ul>
+            <p class="links"><a href="https://github.com/roy2231/Remember" target="_blank" rel="noopener">Code ↗</a></p>
+          </article>
+        </div>
+
+        <div class="more">
+          <div>
+            <h3>More AI builds</h3>
+            <ul>
+              <li><b>Inventory bot for local businesses</b><span>A RAG-based assistant that answers stock questions from a shop's own inventory data.</span></li>
+              <li><b>Personal research assistant</b><span>Automated research workflows built in n8n.</span></li>
+              <li><b>Brand monitoring system</b><span>Tracks mentions on Twitter and Reddit with Rilo and scores them with LLM sentiment analysis.</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Learning phase · ages 15–18</h3>
+            <ul>
+              <li><b>Study app</b><span>Curated YouTube playlists that helped classmates keep studying during lockdown.</span></li>
+              <li><b>Fund Your Idea on Nas.io</b><span>A community of 300+ founders that earned ₹60K.</span></li>
+              <li><b>No-code product attempts</b><span>Several products built before I could code. They failed, and taught me how to ship.</span></li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="log">
+    <div class="wrap">
+      <div class="field"><span>#</span> experience</div>
+      <div>
+        <h2>A path that wasn't linear</h2>
+        <p class="intro">Affiliate marketing, crowdfunding and student counseling came first. Then three startups and a 300-founder community before Ateegnas.</p>
+        <ol class="log" reversed>
+          <li>
+            <time>Mar – May 2026</time>
+            <div>
+              <h3><span class="org">iMerit Scholars</span> <span class="role">· Data Collector</span></h3>
+              <p>Collected egocentric data in the scholars program, a first-hand look at how large annotation teams gather real-world data.</p>
+            </div>
+          </li>
+          <li>
+            <time>Mar 2025 – now</time>
+            <div>
+              <h3><span class="org">Ateegnas</span> <span class="role">· Founder</span><span class="tag">current</span></h3>
+              <p>Building data infrastructure for AI.</p>
+            </div>
+          </li>
+          <li>
+            <time>Jan – Mar 2025</time>
+            <div>
+              <h3><span class="org">Brevity</span> <span class="role">· Founder</span></h3>
+              <p>A short-drama platform for affordable, episodic entertainment, designed to pay creators more and keep viewers engaged.</p>
+            </div>
+          </li>
+          <li>
+            <time>Sep – Dec 2024</time>
+            <div>
+              <h3><span class="org">Nas.io</span> <span class="role">· Community Manager</span></h3>
+              <p>Started and grew “Fund Your Idea” to 300+ startup founders in under three months and ₹60K in revenue, sharing grant and funding databases, tools and pitch-deck support.</p>
+            </div>
+          </li>
+          <li>
+            <time>Jul – Nov 2024</time>
+            <div>
+              <h3><span class="org">Gulu</span> <span class="role">· Co-Founder</span></h3>
+              <p>An organic social platform for genuine local connection, with no fake accounts or theme pages.</p>
+            </div>
+          </li>
+          <li>
+            <time>Oct – Dec 2023</time>
+            <div>
+              <h3><span class="org">Testbook</span> <span class="role">· Tele-counselor</span></h3>
+              <p>Guided students from many boards and regions through course selection and onboarding.</p>
+            </div>
+          </li>
+          <li>
+            <time>Jul – Aug 2023</time>
+            <div>
+              <h3><span class="org">Tare Zameen Foundation</span> <span class="role">· Crowdfunding Intern</span></h3>
+              <p>Ran social-media crowdfunding campaigns and made the content that brought in donors. Interned at Muskurahat Foundation over the same summer.</p>
+            </div>
+          </li>
+          <li>
+            <time>Sep 2022 – Apr 2023</time>
+            <div>
+              <h3><span class="org">Millionaire Track</span> <span class="role">· Affiliate Marketer</span></h3>
+              <p>Sold courses on Canva, Facebook Ads and Google Ads through affiliate campaigns with a high conversion rate.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="field"><span>#</span> skills</div>
+      <div class="cols">
+        <div>
+          <h3>Top skills</h3>
+          <ul>
+            <li>Fine-tuning</li>
+            <li>Text classification</li>
+            <li>Hugging Face</li>
+            <li>RAG pipelines</li>
+            <li>Community building</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Stack</h3>
+          <ul>
+            <li>Python, JavaScript <small>languages</small></li>
+            <li>React, React Native <small>front end</small></li>
+            <li>Firebase, MongoDB <small>data</small></li>
+            <li>AWS, Google Cloud <small>cloud</small></li>
+            <li>Vercel, Netlify, Cloudflare <small>deploy</small></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Languages</h3>
+          <ul>
+            <li>Odia <small>native</small></li>
+            <li>Hindi <small>full professional</small></li>
+            <li>English <small>working</small></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Recognition</h3>
+          <ul>
+            <li>Best Leadership <small>award</small></li>
+            <li>Foundations of Business &amp; Entrepreneurship <small>cert.</small></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="field"><span>#</span> education</div>
+      <ul class="edu">
+        <li><span class="meta">2023 – 2024</span><div><b>Vikram Deb University, Jeypore</b><span>BBA, Business Administration and Management</span></div></li>
+        <li><span class="meta">2016 – 2023</span><div><b>Jawahar Navodaya Vidyalaya</b><span>Class 12, Science</span></div></li>
+        <li><span class="meta">2022</span><div><b>Elearnmarkets</b><span>Basics of the Stock Market</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="field"><span>#</span> contact</div>
+      <div>
+        <h2>Working on AI and need better data? Let's talk.</h2>
+        <div class="contact-row">
+          <span class="email" id="email">princemrb89@gmail.com</span>
+          <button class="copy" id="copy" type="button">Copy email</button>
+          <a class="btn" href="https://www.linkedin.com/in/manas-ranjan-bissoyi-76a29b202" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/roy2231" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn" href="https://huggingface.co/roy2231" target="_blank" rel="noopener">Hugging Face ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Manas Ranjan Bissoyi</span>
+    <span>Bhubaneswar · Nabarangpur, Odisha</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Copy email
+  var btn = document.getElementById('copy');
+  var emailEl = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    var text = emailEl.textContent.trim();
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(emailEl);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected, press Ctrl+C';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy email'; }, 1800);
+      }, selectIt);
+    } catch (e) { selectIt(); }
+  });
+
+  // Hero matrix: noisy points settle into a clean grid
+  var canvas = document.getElementById('matrix');
+  var ctx = canvas.getContext('2d');
+  var cleanEl = document.getElementById('clean');
+  var totalEl = document.getElementById('total');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var COLS = 20, ROWS = 16, pts = [], W = 0, H = 0, start = 0;
+
+  function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  function rand(seed) { var x = Math.sin(seed) * 10000; return x - Math.floor(x); }
+
+  function build() {
+    var dpr = window.devicePixelRatio || 1;
+    var rect = canvas.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    pts = [];
+    var padX = W * 0.09, padY = H * 0.1;
+    var gx = (W - padX * 2) / (COLS - 1), gy = (H - padY * 2) / (ROWS - 1);
+    for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) {
+      var i = r * COLS + c;
+      pts.push({
+        tx: padX + c * gx, ty: padY + r * gy,
+        sx: rand(i * 3.1 + 1) * W, sy: rand(i * 7.7 + 2) * H,
+        delay: (c / COLS) * 0.55 + rand(i * 1.3) * 0.25,
+        flag: rand(i * 5.9 + 4) < 0.035
+      });
+    }
+    totalEl.textContent = pts.length;
+  }
+
+  function ease(t) { return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3); }
+
+  function draw(now) {
+    var t = reduce ? 10 : (now - start) / 1000;
+    var accent = css('--accent'), noise = css('--noise'), signal = css('--signal');
+    ctx.clearRect(0, 0, W, H);
+    var clean = 0, rad = Math.max(1.6, Math.min(W, H) / 120);
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      var k = ease((t - p.delay) / 1.4);
+      var x = p.sx + (p.tx - p.sx) * k, y = p.sy + (p.ty - p.sy) * k;
+      var done = k >= 0.999;
+      if (done && !p.flag) clean++;
+      ctx.beginPath();
+      ctx.fillStyle = p.flag ? signal : (done ? accent : noise);
+      ctx.arc(x, y, p.flag ? rad * 1.5 : rad, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    cleanEl.textContent = clean;
+    if (!reduce && t < 3) requestAnimationFrame(draw);
+  }
+
+  function run() { build(); start = performance.now(); requestAnimationFrame(draw); }
+  run();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { build(); draw(performance.now() + 1e7); }, 150);
+  });
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  if (mq.addEventListener) mq.addEventListener('change', function () { draw(performance.now() + 1e7); });
+  new MutationObserver(function () { draw(performance.now() + 1e7); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+
+</body>
+</html>
